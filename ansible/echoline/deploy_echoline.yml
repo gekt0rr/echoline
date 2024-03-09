@@ -1,0 +1,29 @@
+---
+- name: Deploy echoline container
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Copy Dockerfile
+      copy:
+        src: templates/Dockerfile.j2
+        dest: /tmp/Dockerfile
+
+    - name: Build echoline container
+      shell: docker build -t echoline /tmp
+      changed_when: false
+
+    - name: Run echoline container
+      docker_container:
+        name: echoline
+        image: echoline
+        state: started
+        restart_policy: always
+      vars:
+        timer_seconds: "{{ echoline_timer_seconds }}"
+        message: "{{ echoline_message }}"
