@@ -3,11 +3,17 @@
   become: true
 
   pre_tasks:
-    - name: Install Docker
-      apt:
-        name: docker.io
-        state: present
+    # - name: Install Docker # данная задача не отработала на vagrant, т.е нет реп для docker
+    #   apt:
+    #     name: docker.io
+    #     state: present
 
+    - name: Install Docker
+      shell: curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh
+      args:
+        warn: no
+      changed_when: false
+      
     - name: Copy Dockerfile
       copy:
         src: ../Dockerfile
