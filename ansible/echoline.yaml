@@ -1,0 +1,6 @@
+- name: Deploy echoline container
+  hosts: all
+  become: true
+
+  roles:
+    - echoline
