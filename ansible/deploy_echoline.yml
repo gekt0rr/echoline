@@ -2,6 +2,8 @@
 - name: Deploy echoline container
   hosts: all
   become: true
+  roles:
+    - echoline
 
   tasks:
     - name: Install Docker
@@ -11,12 +13,12 @@
 
     - name: Copy Dockerfile
       copy:
-        src: templates/Dockerfile.j2
+        src: roles/echoline/templates/Dockerfile.j2
         dest: /tmp/Dockerfile
 
     - name: Build echoline container
       shell: docker build -t echoline /tmp
-      changed_when: false
+      changed_when: false # этот шаг всегда будет помечен как changed, поэтому отключаем эту метку
 
     - name: Run echoline container
       docker_container:
