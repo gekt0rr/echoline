@@ -7,4 +7,4 @@ RUN chmod +x /echoline.sh
 ENV TIMER_SECONDS 1
 ENV MESSAGE "ON AIR"
 
-CMD ["/echoline.sh"]
+CMD /echoline.sh -t "$TIMER_SECONDS" -m "$MESSAGE"
