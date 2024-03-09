@@ -24,7 +24,7 @@ while getopts ":t:m:h" opt; do
     case $opt in
         t)
             if ! is_number "$OPTARG"; then
-                echo "Invalid timer value: $OPTARG. Timer value must be a number." >&2
+                echo "Не верное значение таймера: $OPTARG. Таймер должен быть числом." >&2
                 exit 1
             fi
             timer=$OPTARG
@@ -36,7 +36,7 @@ while getopts ":t:m:h" opt; do
             usage
             ;;
         \?)
-            echo "Invalid option: -$OPTARG" >&2
+            echo "Неверная опция: -$OPTARG" >&2
             usage
             ;;
     esac

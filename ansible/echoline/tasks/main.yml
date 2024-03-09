@@ -1,0 +1,12 @@
+---
+- name: Build and run echoline container
+  docker_image:
+    build:
+      context: "{{ role_path }}/templates"
+      dockerfile: Dockerfile.j2
+    name: echoline
+    state: present
+    env:
+      TIMER_SECONDS: "{{ timer_seconds }}"
+      MESSAGE: "{{ message }}"
+    restart_policy: always
