@@ -25,5 +25,5 @@
         state: started
         restart_policy: always
       vars:
-        timer_seconds: "{{ echoline_timer_seconds }}"
+        timer_seconds: "{{ echoline_timer_seconds }}" 
         message: "{{ echoline_message }}"
