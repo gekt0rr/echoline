@@ -2,8 +2,6 @@
 - name: Deploy echoline container
   hosts: all
   become: true
-  roles:
-    - echoline
 
   tasks:
     - name: Install Docker
@@ -13,7 +11,7 @@
 
     - name: Copy Dockerfile
       copy:
-        src: roles/echoline/templates/Dockerfile.j2
+        src: ../ansible/roles/echoline/templates/Dockerfile.j2
         dest: /tmp/Dockerfile
 
     - name: Build echoline container

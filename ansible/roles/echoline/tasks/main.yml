@@ -2,7 +2,7 @@
 - name: Build and run echoline container
   docker_image:
     build:
-      context: "{{ role_path }}/templates"
+      context: "../templates"
       dockerfile: Dockerfile.j2
     name: echoline
     state: present
