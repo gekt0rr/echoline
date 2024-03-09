@@ -12,6 +12,11 @@
       copy:
         src: ../Dockerfile
         dest: /tmp/Dockerfile
+    
+    - name: Copy Dockerfile
+      copy:
+        src: ../echoline.sh
+        dest: /tmp/echoline.sh
 
     - name: Build echoline container
       shell: docker build -t echoline /tmp
