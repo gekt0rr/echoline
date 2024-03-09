@@ -1,4 +1,4 @@
-FROM bash:latest
+FROM ubuntu:latest
 LABEL maintainer="gekt0rr"
 
 COPY ../shell-script/echoline.sh /echoline.sh
