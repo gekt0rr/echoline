@@ -2,5 +2,20 @@
   hosts: all
   become: true
 
+  tasks:
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Copy Dockerfile
+      copy:
+        src: ../Dockerfile
+        dest: /tmp/Dockerfile
+
+    - name: Build echoline container
+      shell: docker build -t echoline /tmp
+      changed_when: false # этот шаг всегда будет помечен как changed, поэтому отключаем эту метку
+
   roles:
     - echoline
