@@ -44,10 +44,10 @@
     #     name: docker.io
     #     state: present
 
-    # БЛОК УСТАНОВКИ DOCKER С ДОБАВЛЕНИЕМ РЕПОЗИТОРИЯ
+    # КОНЕЦ БЛОКА УСТАНОВКИ DOCKER С ДОБАВЛЕНИЕМ РЕПОЗИТОРИЯ
 
     - name: Install Docker
-      shell: curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh
+      shell: curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh # -fsSL - означает, что curl будет работать в тихом режиме и не будет выводить никаких сообщений, а также будет следовать перенаправлениям
       changed_when: false
 
     - name: Copy Dockerfile
