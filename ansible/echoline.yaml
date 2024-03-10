@@ -39,10 +39,10 @@
     #   pip:
     #     name: docker
 
-    - name: Install Docker # данная задача не отработала на vagrant, т.е нет реп для docker
-      apt:
-        name: docker.io
-        state: present
+    # - name: Install Docker # данная задача не отработала на vagrant, т.е нет реп для docker
+    #   apt:
+    #     name: docker.io
+    #     state: present
 
     # КОНЕЦ БЛОКА УСТАНОВКИ DOCKER С ДОБАВЛЕНИЕМ РЕПОЗИТОРИЯ
 
