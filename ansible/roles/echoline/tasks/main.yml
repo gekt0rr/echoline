@@ -2,7 +2,7 @@
 - name: Build and run echoline container
   docker_container:
     name: echoline
-    image: echoline
+    image: echoline # предполагается, что образ уже собран
     state: started
     restart_policy: always
     env:

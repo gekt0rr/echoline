@@ -3,10 +3,48 @@
   become: true
 
   pre_tasks:
+
+    # БЛОК УСТАНОВКИ DOCKER С ДОБАВЛЕНИЕМ РЕПОЗИТОРИЯ
+
+    # - name: Install required system packages
+    #   apt:
+    #     pkg:
+    #       - apt-transport-https
+    #       - ca-certificates
+    #       - curl
+    #       - software-properties-common
+    #       - python3-pip
+    #       - virtualenv
+    #       - python3-setuptools
+    #     state: latest
+    #     update_cache: true
+
+    # - name: Add Docker GPG apt Key
+    #   apt_key:
+    #     url: https://download.docker.com/linux/ubuntu/gpg
+    #     state: present
+
+    # - name: Add Docker Repository
+    #   apt_repository:
+    #     repo: deb https://download.docker.com/linux/ubuntu focal stable
+    #     state: present
+
+    # - name: Update apt and install docker-ce
+    #   apt:
+    #     name: docker-ce
+    #     state: latest
+    #     update_cache: true
+
+    # - name: Install Docker Module for Python
+    #   pip:
+    #     name: docker
+
     # - name: Install Docker # данная задача не отработала на vagrant, т.е нет реп для docker
     #   apt:
     #     name: docker.io
     #     state: present
+
+    # БЛОК УСТАНОВКИ DOCKER С ДОБАВЛЕНИЕМ РЕПОЗИТОРИЯ
 
     - name: Install Docker
       shell: curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh
