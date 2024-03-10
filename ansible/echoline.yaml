@@ -4,51 +4,51 @@
 
   pre_tasks:
 
-    # БЛОК УСТАНОВКИ DOCKER С ДОБАВЛЕНИЕМ РЕПОЗИТОРИЯ
+    # БЛОК УСТАНОВКИ DOCKER С ДОБАВЛЕНИЕМ РЕПОЗИТОРИЯ. Репозиторий добавляется, т.к. в репозитории по умолчанию VM в vagrant нет пакета docker
 
-    # - name: Install required system packages
-    #   apt:
-    #     pkg:
-    #       - apt-transport-https
-    #       - ca-certificates
-    #       - curl
-    #       - software-properties-common
-    #       - python3-pip
-    #       - virtualenv
-    #       - python3-setuptools
-    #     state: latest
-    #     update_cache: true
+    - name: Install required system packages
+      apt:
+        pkg:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+          - python3-pip
+          - virtualenv
+          - python3-setuptools
+        state: latest
+        update_cache: true
 
-    # - name: Add Docker GPG apt Key
-    #   apt_key:
-    #     url: https://download.docker.com/linux/ubuntu/gpg
-    #     state: present
+    - name: Add Docker GPG apt Key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
 
-    # - name: Add Docker Repository
-    #   apt_repository:
-    #     repo: deb https://download.docker.com/linux/ubuntu focal stable
-    #     state: present
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu focal stable
+        state: present
 
-    # - name: Update apt and install docker-ce
-    #   apt:
-    #     name: docker-ce
-    #     state: latest
-    #     update_cache: true
+    - name: Update apt and install docker-ce
+      apt:
+        name: docker-ce
+        state: latest
+        update_cache: true
 
     # - name: Install Docker Module for Python
     #   pip:
     #     name: docker
 
-    # - name: Install Docker # данная задача не отработала на vagrant, т.е нет реп для docker
-    #   apt:
-    #     name: docker.io
-    #     state: present
+    - name: Install Docker # данная задача не отработала на vagrant, т.е нет реп для docker
+      apt:
+        name: docker.io
+        state: present
 
     # КОНЕЦ БЛОКА УСТАНОВКИ DOCKER С ДОБАВЛЕНИЕМ РЕПОЗИТОРИЯ
 
-    - name: Install Docker
-      shell: curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh # -fsSL - означает, что curl будет работать в тихом режиме и не будет выводить никаких сообщений, а также будет следовать перенаправлениям
-      changed_when: false
+    # - name: Install Docker
+    #   shell: curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh # -fsSL - означает, что curl будет работать в тихом режиме и не будет выводить никаких сообщений, а также будет следовать перенаправлениям
+    #   changed_when: false
 
     - name: Copy Dockerfile
       copy:
